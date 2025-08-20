@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор MIDI-композиций</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #5a5a5a; }
+        form { display: flex; flex-direction: column; gap: 12px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        label { font-weight: bold; }
+        input[type="text"] { padding: 10px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 12px; font-size: 16px; color: #fff; background-color: #007bff; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 25px; padding: 15px; background: #e9f7ef; border-left: 5px solid #28a745; border-radius: 4px; }
+        .result a { font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Генератор MIDI-композиций</h1>
+    <p>Задайте параметры для создания вашей уникальной мелодии для гитары и ударных.</p>
+
+    <form action="/generate" method="post">
+        <label for="genre">Жанр:</label>
+        <input type="text" id="genre" name="genre" value="Classic Rock" required>
+
+        <label for="key">Тональность:</label>
+        <input type="text" id="key" name="key" value="E Minor" required>
+
+        <label for="mood">Настроение:</label>
+        <input type="text" id="mood" name="mood" value="Driving and Energetic" required>
+
+        <label for="output_filename">Имя файла (без .mid):</label>
+        <input type="text" id="output_filename" name="output_filename" value="rock_anthem" required>
+
+        <button type="submit">Сгенерировать музыку</button>
+    </form>
+
+    {% if download_link %}
+    <div class="result">
+        <h2>Готово!</h2>
+        <p>Ваша композиция "{{ filename }}" сгенерирована.</p>
+        <a href="{{ download_link }}" download>Скачать MIDI-файл</a>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="result" style="background: #f8d7da; border-left-color: #dc3545;">
+        <h2 style="color: #721c24;">Ошибка</h2>
+        <p style="color: #721c24;">{{ error }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
