@@ -9,7 +9,26 @@ This project is a web-based application that uses Google's Gemini API to generat
 - **AI-Powered:** Leverages the Gemini API to create unique musical ideas.
 - **MIDI Output:** Generates standard `.mid` files that can be downloaded and used in any Digital Audio Workstation (DAW) or MIDI player.
 
-## Requirements
+## Quick Install (Linux / Manjaro)
+
+For users on Manjaro or other Arch-based Linux distributions, you can use the provided setup script for a one-click installation experience.
+
+1.  Open a terminal in the project's root directory.
+2.  Make the installation script executable:
+    ```bash
+    chmod +x install.sh
+    ```
+3.  Run the script:
+    ```bash
+    ./install.sh
+    ```
+4.  Follow the on-screen instructions. The script will guide you through the setup and create a desktop shortcut for you.
+
+## Manual Installation
+
+If you prefer to set up the project manually, follow these steps.
+
+### Requirements
 
 - Python 3.7+
 - A modern web browser (e.g., Chrome, Firefox, Safari)
